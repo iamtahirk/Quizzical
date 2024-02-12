@@ -27,7 +27,7 @@ To run the application locally, follow these steps:
   
 ## How to Use
 
-1. Visit the [Quizzical App](https://example.com) website.
+1. Visit the [Quizzical App](https://quizzical-scrim.netlify.app/) website.
 2. Select the number of questions, category, and difficulty level from the dropdown menus.
 3. Click the "Start Quiz" button to begin the quiz.
 4. Answer each question by selecting one of the provided options.
