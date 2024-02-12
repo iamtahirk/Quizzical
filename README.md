@@ -20,7 +20,7 @@ Quizzical is a solo project recommended by [Bob Ziroll](https://twitter.com/bobz
 
 To run the application locally, follow these steps:
 
-1. Clone the repository: `git clone <repository-url>`
+1. Clone the repository: `git clone https://github.com/iamtahirk/Quizzical.git`
 2. Install dependencies: `npm install`
 3. Start the development server: `npm run dev`
 4. Visit `http://localhost:5173/` in your browser to use the application.
@@ -45,10 +45,6 @@ To run the application locally, follow these steps:
 - React.js
 - Axios for API requests
 - React Confetti for celebration animation
-
-## Preview
-
-[Add a screenshot or GIF of your app in action]
 
 ## License
 
