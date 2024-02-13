@@ -235,6 +235,23 @@ li.wrong {
   background-color: #F8BCBC;
 }
 
+.loadingscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingscreen p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: #293264;
+  margin-top: 5rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
 
 
 @media (prefers-color-scheme: light) {
@@ -243,7 +260,6 @@ li.wrong {
 
 
 @media screen and (max-width: 768px) {
-
   ul.answers, ul {
     /* flex-direction: column; */
     flex-wrap: wrap !important;

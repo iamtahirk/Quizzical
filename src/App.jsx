@@ -35,6 +35,7 @@ export default () => {
   const [confettiRun, setConfettiRun] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: undefined, height: undefined });
   const [hasFetchedQuestions, setHasFetchedQuestions] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   // useEffects
 
@@ -50,20 +51,24 @@ export default () => {
         try {
           const response = await axios.get(customURL);
 
+          if (response.data.response_code === 5 || response.data.response_code === 1) {
+            setShowButton(true);
+          }
           // Shuffle the answers for each question
           const shuffledQuestions = response.data.results.map(question => ({
             ...question,
             answers: shuffleArray([...question.incorrect_answers, question.correct_answer].map(answer => decode(answer)))
           }));
           setAllQuestions(shuffledQuestions);
+          
         } catch (error) {
           console.error('Error fetching questions:', error);
+          setShowButton(true);
         }
       }
-      
       setTimeout(() => {
         getQuestions();
-      }, 2000);
+      }, 1200);
     }
   }, [customURL, menuScreen]);
 
@@ -108,6 +113,7 @@ export default () => {
 
   const handlePlayAgain = () => {
     // Reset all quiz-related state to play again
+    setShowButton(false);
     setCustomURL('');
     setSelectedAnswers([]);
     setAllQuestions([]);
@@ -154,7 +160,18 @@ export default () => {
                 title={allQuestionsAnswered ? "" : "Please select an answer for each question!!"}>Check Answers</button>
 
                 <button onClick={handlePlayAgain} className="btn-secondary">Restart</button>
-              </div> : <div class="spinner"></div>
+              </div> : (
+                <div className='loadingscreen'>
+                  <div className="spinner"></div>
+                  
+                  {showButton && (
+                    <>
+                      <p>Quiz retrieval failed. Please click below to restart.</p>
+                      <button onClick={handlePlayAgain} className="btn-secondary">Restart</button>
+                    </>
+                  )}
+                </div>
+              )
               }
             
           </>
