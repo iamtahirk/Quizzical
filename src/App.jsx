@@ -109,9 +109,6 @@ export default () => {
     const newSelectedAnswers = [...selectedAnswers];
     newSelectedAnswers[index] = selectedAnswer;
     setSelectedAnswers(newSelectedAnswers);
-
-    console.log('Selected Answers: ', selectedAnswers.length);
-    console.log('All Questions: ', allQuestions.length);
   };
 
   const handlePlayAgain = () => {
