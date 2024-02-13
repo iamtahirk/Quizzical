@@ -109,6 +109,9 @@ export default () => {
     const newSelectedAnswers = [...selectedAnswers];
     newSelectedAnswers[index] = selectedAnswer;
     setSelectedAnswers(newSelectedAnswers);
+
+    console.log('Selected Answers: ', selectedAnswers.length);
+    console.log('All Questions: ', allQuestions.length);
   };
 
   const handlePlayAgain = () => {
@@ -131,6 +134,7 @@ export default () => {
   // Check if all answers are selected to avoid Button Click
   const allQuestionsAnswered = selectedAnswers.length === allQuestions.length;
 
+  
   return (
     <>
       {/* Render Confetti component if confettiRun is true */}
@@ -156,7 +160,7 @@ export default () => {
           ))}
             {allQuestions.length > 0 ? 
               <div className='answer-buttons'>
-                <button className='btn-secondary' disabled={allQuestions.length === 0 || !allQuestionsAnswered} onClick={handleCheckAnswers}
+                <button className='btn-secondary' disabled={!allQuestions.length || !allQuestions.every((question, index) => selectedAnswers[index])} onClick={handleCheckAnswers}
                 title={allQuestionsAnswered ? "" : "Please select an answer for each question!!"}>Check Answers</button>
 
                 <button onClick={handlePlayAgain} className="btn-secondary">Restart</button>
