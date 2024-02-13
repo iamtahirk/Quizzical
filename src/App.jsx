@@ -61,7 +61,9 @@ export default () => {
         }
       }
       
-      getQuestions();
+      setTimeout(() => {
+        getQuestions();
+      }, 2000);
     }
   }, [customURL, menuScreen]);
 
@@ -89,7 +91,7 @@ export default () => {
     // Start the quiz with the provided URL
     setCustomURL(url);
     setMenuScreen(false);
-    // console.log('URL: ', url);
+    console.log('URL: ', url);
   };
 
   const handleCheckAnswers = () => {
@@ -146,8 +148,15 @@ export default () => {
               selectedAnswer={selectedAnswers[index]}
             />
           ))}
-            <button className='btn-secondary' disabled={!allQuestionsAnswered} onClick={handleCheckAnswers}
-              title={allQuestionsAnswered ? "" : "Please select an answer for each question!!"}>Check Answers</button>
+            {allQuestions.length > 0 ? 
+              <div className='answer-buttons'>
+                <button className='btn-secondary' disabled={allQuestions.length === 0 || !allQuestionsAnswered} onClick={handleCheckAnswers}
+                title={allQuestionsAnswered ? "" : "Please select an answer for each question!!"}>Check Answers</button>
+
+                <button onClick={handlePlayAgain} className="btn-secondary">Restart</button>
+              </div> : <div class="spinner"></div>
+              }
+            
           </>
         )}
       </main>

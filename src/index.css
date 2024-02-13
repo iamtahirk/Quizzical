@@ -54,6 +54,25 @@ main {
   left:-10px;
 }
 
+/* HTML: <div class="spinner"></div> */
+.spinner {
+  width: 75px;
+  --b: 12px; 
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(#0000 10%,#4153b8) content-box;
+  -webkit-mask:
+    repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+    radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+  -webkit-mask-composite: destination-in;
+          mask-composite: intersect;
+  animation:spin 1s infinite steps(10);
+}
+@keyframes spin {to{transform: rotate(1turn)}}
+
+
+
 
 @keyframes blobMovement {
   0% {
@@ -86,14 +105,12 @@ main {
 }
 
 button {
-  border: 5px solid transparent;
-  font-size: 1rem;
-  font-weight: 500;
   font-family: inherit;
   background-color: #4D5B9E;
   color: #F5F7FB;
   cursor: pointer;
   transition: background-color 0.25s;
+  border: none;
 }
 button.btn-main {
   font-family: 'Inter', sans-serif;
@@ -102,6 +119,7 @@ button.btn-main {
   margin-top: 1rem;
   border-radius: 15px;
   padding: 1rem 3.75rem;
+  border: 5px solid transparent;
 }
 
 .btn-secondary {
@@ -112,10 +130,7 @@ button.btn-main {
   margin-bottom: 1.25rem;
   border-radius: 12px;
   padding: .75rem 1.5rem;
-  background-color: #4D5B9E;
-  color: #F5F7FB;
   cursor: pointer;
-  transition: background-color 0.25s;
 }
 
 .btn-secondary:disabled,
@@ -131,12 +146,23 @@ button.btn-main {
 }
 
 button:hover {
-  background-color:#414f91;
+  background-color:#394785;
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.answer-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer-buttons * {
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .dropdowns {
