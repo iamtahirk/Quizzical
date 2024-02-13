@@ -9,7 +9,6 @@ import Question from './components/Question';
 import Results from './components/Results';
 import './App.css';
 
-
 // Function to shuffle the array
 const shuffleArray = array => {
   let length = array.length;
@@ -131,7 +130,6 @@ export default () => {
   // Check if all answers are selected to avoid Button Click
   const allQuestionsAnswered = selectedAnswers.length === allQuestions.length;
 
-  
   return (
     <>
       {/* Render Confetti component if confettiRun is true */}
@@ -174,7 +172,6 @@ export default () => {
                 </div>
               )
               }
-            
           </>
         )}
       </main>
