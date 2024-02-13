@@ -96,7 +96,7 @@ export default () => {
     // Start the quiz with the provided URL
     setCustomURL(url);
     setMenuScreen(false);
-    console.log('URL: ', url);
+    // console.log('URL: ', url);
   };
 
   const handleCheckAnswers = () => {
